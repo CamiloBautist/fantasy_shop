@@ -265,7 +265,8 @@
                     <div class="flex flex-col gap-1">
                         <h3
                             class="font-display text-lg font-bold text-white group-hover:text-legendary transition-colors">
-                            Vorpal Blade</h3>
+                            <a href="../item/item.html">Vorpal Blade</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Requires Lvl 60 • Two-Handed</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">1,500 G</span>
@@ -296,7 +297,8 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-epic transition-colors">
-                            Shadow Cloak</h3>
+                            <a href="../item/item.html">Shadow Cloak</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Requires Lvl 45 • Light Armor</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">850 G</span>
@@ -327,7 +329,8 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-rare transition-colors">
-                            Elixir of Life</h3>
+                            <a href="../item/item.html">Elixir of Life</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Consumable • Instant</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">250 G</span>
@@ -358,7 +361,8 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-common transition-colors">
-                            Iron Buckler</h3>
+                            <a href="../item/item.html">Iron Buckler</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Requires Lvl 5 • Shield</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">45 G</span>
@@ -389,7 +393,8 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-epic transition-colors">
-                            Ring of Frost</h3>
+                            <a href="../item/item.html">Ring of Frost</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Requires Lvl 30 • Accessory</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">600 G</span>
@@ -420,7 +425,8 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-rare transition-colors">
-                            Scroll of Wisdom</h3>
+                            <a href="../item/item.html">Scroll of Wisdom</a>
+                        </h3>
                         <p class="text-xs text-slate-400">One-time use • Learn Spell</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">320 G</span>
@@ -451,7 +457,8 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-common transition-colors">
-                            Traveler's Boots</h3>
+                            <a href="../item/item.html">Traveler's Boots</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Requires Lvl 1 • Feet</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">20 G</span>
@@ -483,7 +490,8 @@
                     <div class="flex flex-col gap-1">
                         <h3
                             class="font-display text-lg font-bold text-white group-hover:text-legendary transition-colors">
-                            Helm of the Void</h3>
+                            <a href="../item/item.html">Helm of the Void</a>
+                        </h3>
                         <p class="text-xs text-slate-400">Requires Lvl 70 • Plate</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">2,400 G</span>
@@ -509,28 +517,61 @@
                 <div class="flex flex-col gap-1 w-full max-w-[200px]">
                     <div
                         class="relative h-3 w-full overflow-hidden rounded-full bg-surface-darker border border-white/10">
-                        <div
-                            class="absolute left-0 top-0 h-full w-[85%] rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.6)]">
+                        <div id="hp-fill"
+                            class="absolute left-0 top-0 h-full w-[85%] rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.6)] transition-all duration-500 ease-in-out">
                         </div>
-                        <div
+                        <div id="hp-text"
                             class="absolute inset-0 z-10 flex items-center justify-center text-[8px] font-bold text-white/80">
                             HP 850/1000</div>
                     </div>
+
                     <div
                         class="relative h-3 w-full overflow-hidden rounded-full bg-surface-darker border border-white/10">
-                        <div
-                            class="absolute left-0 top-0 h-full w-[60%] rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.6)]">
+                        <div id="mp-fill"
+                            class="absolute left-0 top-0 h-full w-[60%] rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.6)] transition-all duration-500 ease-in-out">
                         </div>
-                        <div
+                        <div id="mp-text"
                             class="absolute inset-0 z-10 flex items-center justify-center text-[8px] font-bold text-white/80">
                             MP 300/500</div>
                     </div>
                 </div>
             </div>
+            <script>
+                // Valores iniciales
+                let currentHP = 850;
+                const maxHP = 1000;
+                let currentMP = 300;
+                const maxMP = 500;
+
+                function animateStats() {
+                    // Generamos un cambio aleatorio (sube o baja un poco)
+                    currentHP += Math.floor(Math.random() * 60) - 30;
+                    currentMP += Math.floor(Math.random() * 40) - 20;
+
+                    // Validamos que no se salgan del rango 0 - Max
+                    currentHP = Math.max(0, Math.min(maxHP, currentHP));
+                    currentMP = Math.max(0, Math.min(maxMP, currentMP));
+
+                    // Calculamos porcentajes
+                    const hpPercent = (currentHP / maxHP) * 100;
+                    const mpPercent = (currentMP / maxMP) * 100;
+
+                    // Actualizamos las barras (el ancho)
+                    document.getElementById('hp-fill').style.width = `${hpPercent}%`;
+                    document.getElementById('mp-fill').style.width = `${mpPercent}%`;
+
+                    // Actualizamos los textos
+                    document.getElementById('hp-text').innerText = `HP ${currentHP}/${maxHP}`;
+                    document.getElementById('mp-text').innerText = `MP ${currentMP}/${maxMP}`;
+                }
+
+                // Se ejecuta cada 2 segundos para ver el efecto constante
+                setInterval(animateStats, 2000);
+            </script>
             <!-- Experience Bar / Center Info -->
             <div class="flex w-1/3 justify-center">
                 <div class="hidden flex-col items-center gap-1 sm:flex">
-                    <span class="text-xs font-bold uppercase tracking-widest text-slate-500">Level 42 Paladin</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Level 42 Paladin</span>
                     <div class="relative h-1.5 w-48 overflow-hidden rounded-full bg-surface-darker">
                         <div class="absolute left-0 top-0 h-full w-[45%] bg-yellow-500"></div>
                     </div>
@@ -538,14 +579,38 @@
             </div>
             <!-- Currency -->
             <div class="flex w-1/3 justify-end items-center gap-6">
-                <div class="flex items-center gap-2 rounded bg-black/40 px-3 py-1 border border-white/5">
-                    <span class="material-symbols-outlined text-gold text-[20px]">monetization_on</span>
-                    <span class="font-display text-lg font-bold text-gold">4,250 G</span>
-                </div>
                 <div
-                    class="hidden md:flex items-center gap-2 text-slate-400 hover:text-white cursor-pointer transition-colors">
-                    <span class="material-symbols-outlined text-[20px]">settings</span>
+                    class="relative overflow-hidden flex items-center gap-2 rounded bg-black/40 px-3 py-1 border border-white/5 group">
+
+                    <div
+                        class="animate-shine absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                    </div>
+
+                    <span class="material-symbols-outlined text-gold text-[20px] z-10">monetization_on</span>
+                    <span class="font-display text-lg font-bold text-gold z-10">4,250 G</span>
                 </div>
+                <style>
+                    @keyframes shine {
+                        0% {
+                            transform: translateX(-100%) skewX(-15deg);
+                        }
+
+                        30% {
+                            transform: translateX(200%) skewX(-15deg);
+                        }
+
+                        100% {
+                            transform: translateX(200%) skewX(-15deg);
+                        }
+                    }
+
+                    .animate-shine {
+                        animation: shine 4s infinite;
+                        /* Se repite cada 4 segundos */
+                        width: 50%;
+                        /* Ancho del destello */
+                    }
+                </style>
             </div>
         </div>
     </footer>
