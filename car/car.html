@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Dark Dungeon - Loot Chest</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "primary-hover": "#6b10c6",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                        "surface-dark": "#2a1f36",
+                        "surface-darker": "#201729",
+                        "gold": "#ffd700",
+                        "common": "#e2e8f0",
+                        "rare": "#22c55e",
+                        "epic": "#3b82f6",
+                        "legendary": "#eab308",
+                        "wood-dark": "#2c1c14",
+                        "wood-light": "#4a3020",
+                        "iron": "#383c44",
+                        "parchment": "#f1e5cc",
+                        "parchment-dark": "#dcb77c",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'dungeon-wall': "linear-gradient(rgba(25, 16, 34, 0.92), rgba(25, 16, 34, 0.95))",
+                        'wood-texture': "linear-gradient(to right, #2c1c14, #4a3020, #2c1c14)",
+                        'parchment-bg': "linear-gradient(to bottom, #f1e5cc, #e3cd9c)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2c1c14;
+            border: 2px solid #383c44;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4a3020;
+            border: 1px solid #dcb77c;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7f13ec;
+        }
+
+        .torch-glow {
+            box-shadow: 0 0 30px 10px rgba(255, 140, 0, 0.5);
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        .chest-border {
+            box-shadow:
+                inset 0 0 20px #000,
+                0 0 0 8px #383c44,
+                0 0 0 12px #111;
+        }
+
+        .scroll-edges {
+            clip-path: polygon(2% 0, 98% 0, 100% 2%, 100% 98%, 98% 100%, 2% 100%, 0 98%, 0 2%);
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 0.8;
+                transform: scale(0.98);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-body overflow-x-hidden antialiased bg-dungeon-wall bg-fixed bg-cover bg-center"
+    data-alt="Dark stone dungeon wall texture with moss">
+    <header
+        class="sticky top-0 z-50 w-full border-b border-surface-dark bg-background-dark/95 backdrop-blur-sm shadow-lg">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-8">
+                <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded bg-surface-dark text-primary border border-white/5">
+                        <span class="material-symbols-outlined">fort</span>
+                    </div>
+                    <h1 class="font-display text-xl font-bold tracking-tight text-white uppercase">The Dark Dungeon</h1>
+                </a>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="#">Weapons</a>
+                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="#">Armor</a>
+                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="#">Potions</a>
+                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="#">Scrolls</a>
+                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                        href="#">Artifacts</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex relative group">
+                    <div
+                        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 group-focus-within:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">search</span>
+                    </div>
+                    <input
+                        class="block w-full rounded-lg border-0 bg-surface-dark py-2 pl-10 pr-3 text-sm text-white placeholder-slate-500 focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all shadow-inner"
+                        placeholder="Search the armory..." type="text" />
+                </div>
+                <button onclick="location.reload()"
+                    class="relative flex h-10 items-center gap-2 rounded-lg bg-surface-dark px-4 py-2 text-sm font-bold text-white transition hover:bg-surface-dark/80 hover:text-primary border border-white/5 group">
+                    <span class="material-symbols-outlined group-hover:animate-bounce">inventory_2</span>
+                    <span class="hidden sm:inline"></span>
+                    <span
+                        class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold"
+                        id="cart-badge">2</span>
+                </button>
+                <div
+                    class="h-10 w-10 overflow-hidden rounded-full border-2 border-surface-dark cursor-pointer hover:border-primary transition-colors">
+                    <div class="bg-center bg-no-repeat bg-cover h-full w-full"
+                        data-alt="Pixel art avatar of a knight helmet"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9IhcLLd49DjDSope6jGDYC3SO46-x19MU_W4J5BSZIxN8ZXesqWD8Cs0PVbwxATs_m0n1Ol8qlB52yLzKRUR9sOwzDyvoU-GmAhk832ep-HJImjE3RqHPmEoWlfNm4lbSSYE2gza_Hgnpbi__OPEebZ5sN7soMx-yXgf-6ws5TzmowRdY8spYLgtqQAT8De-IsB8djTMXzX1siTM6MjFdYMfqEXXJ7t83bjx5GvnIVmL4O25ARXms_MMyisrdLSMSBmKxPDI461BO");'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow relative py-12 px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-6xl">
+            <div class="text-center mb-8">
+                <h2 class="font-display text-4xl text-gold drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Open Loot Chest</h2>
+                <p class="font-body text-2xl text-slate-300">Inspect your gathered treasures before departing.</p>
+            </div>
+            <div
+                class="bg-wood-texture chest-border rounded-xl p-6 sm:p-10 flex flex-col lg:flex-row gap-8 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-8 bg-iron flex justify-between px-4 items-center">
+                    <div class="w-16 h-4 bg-black/50 rounded-full"></div>
+                    <div class="w-16 h-4 bg-black/50 rounded-full"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-8 bg-iron flex justify-between px-4 items-center">
+                    <div class="w-16 h-4 bg-black/50 rounded-full"></div>
+                    <div class="w-16 h-4 bg-black/50 rounded-full"></div>
+                </div>
+                <div class="absolute top-0 left-0 h-full w-8 bg-iron"></div>
+                <div class="absolute top-0 right-0 h-full w-8 bg-iron"></div>
+                <div class="lg:w-3/5 mt-8 mb-8 ml-4 z-10">
+                    <h3 class="font-display text-2xl text-white mb-6 border-b-2 border-white/10 pb-2">Items to be Looted
+                    </h3>
+                    <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2" id="item-list">
+                        <p class="text-slate-500 italic p-4 text-center">Your chest is empty.</p>
+                    </div>
+                </div>
+                <div class="lg:w-2/5 mt-8 mb-8 mr-4 z-10 flex flex-col">
+                    <div
+                        class="bg-parchment-bg text-wood-dark p-6 scroll-edges shadow-xl flex-grow flex flex-col relative border border-parchment-dark">
+                        <div
+                            class="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-12 bg-red-800 rounded-full flex items-center justify-center shadow-inner">
+                            <span class="material-symbols-outlined text-white text-sm">auto_awesome</span>
+                        </div>
+                        <h3 class="font-display text-3xl text-center mb-6 mt-10 border-b-2 border-wood-light/30 pb-2">
+                            Transaction Scroll</h3>
+                        <div class="space-y-4 font-body text-2xl flex-grow" id="scroll-list">
+                            <!-- Items will appear here -->
+                        </div>
+                        <div class="mt-8 border-t-4 border-wood-dark pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="font-display text-2xl">Total Due:</span>
+                                <span class="font-body text-4xl font-bold text-red-900 drop-shadow-sm" id="total-due">0
+                                    G</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openEquipModal()"
+                        class="mt-6 w-full py-4 bg-primary text-white font-display text-xl rounded shadow-[0_0_20px_rgba(127,19,236,0.6)] hover:bg-primary-hover hover:scale-[1.02] transition-all border-2 border-purple-300 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                        EQUIP ALL AND DEPART
+                    </button>
+                </div>
+            </div>
+
+            <!-- Equip Confirmation Modal -->
+            <div id="equip-modal"
+                class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+                <div class="relative max-w-lg w-full p-4">
+                    <div class="bg-wood-texture modal-border rounded-lg p-3 relative overflow-visible shadow-2xl">
+                        <div
+                            class="absolute -top-1 -left-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -top-1 -right-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -bottom-1 -left-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -bottom-1 -right-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="bg-parchment-bg border-4 border-[#8B6E4E] p-8 text-center scroll-edges shadow-inner relative z-0">
+                            <h2 class="font-display text-4xl text-[#3A2210] mb-2 drop-shadow-md leading-tight">EQUIP ALL
+                                AND DEPART?</h2>
+                            <p class="font-body text-xl text-slate-700 mb-6">This will spend <span
+                                    id="equip-cost-display" class="font-bold text-red-900"></span> from your pouch.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center font-body text-2xl">
+                                <button onclick="closeEquipModal()"
+                                    class="w-full sm:w-auto px-8 py-3 bg-[#4A5568] text-white rounded border-b-4 border-[#2D3748] hover:bg-[#718096] transition-colors shadow-[inset_0_2px_4px_rgba(255,255,255,0.2)]">CANCEL</button>
+                                <button onclick="confirmEquip()"
+                                    class="w-full sm:w-auto px-8 py-3 bg-primary text-white rounded border-b-4 border-primary-hover hover:bg-primary-hover hover:scale-[1.02] transition-transform shadow-[0_0_15px_rgba(127,19,236,0.8),inset_0_2px_4px_rgba(255,255,255,0.3)]">CONFIRM</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation Modal -->
+            <div id="confirmation-modal"
+                class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+                <div class="relative max-w-lg w-full p-4">
+                    <div class="bg-wood-texture modal-border rounded-lg p-3 relative overflow-visible shadow-2xl">
+                        <div
+                            class="absolute -top-1 -left-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -top-1 -right-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -bottom-1 -left-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+                        <div
+                            class="absolute -bottom-1 -right-1 w-6 h-6 bg-iron border-2 border-black rounded-sm z-10 flex items-center justify-center shadow-md">
+                            <div class="w-2 h-2 bg-black rounded-full"></div>
+                        </div>
+
+
+                        <div
+                            class="bg-parchment-bg border-4 border-[#8B6E4E] p-8 text-center scroll-edges shadow-inner relative z-0">
+                            <h2 class="font-display text-4xl text-[#3A2210] mb-8 drop-shadow-md leading-tight">
+                                ¿CONTINUE?
+                            </h2>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center font-body text-2xl">
+                                <button onclick="closeModal()"
+                                    class="w-full sm:w-auto px-8 py-3 bg-[#4A5568] text-white rounded border-b-4 border-[#2D3748] hover:bg-[#718096] transition-colors shadow-[inset_0_2px_4px_rgba(255,255,255,0.2)]">
+                                    CANCEL
+                                </button>
+                                <button onclick="confirmRemoval()"
+                                    class="w-full sm:w-auto px-8 py-3 bg-primary text-white rounded border-b-4 border-primary-hover hover:bg-primary-hover hover:scale-[1.02] transition-transform shadow-[0_0_15px_rgba(127,19,236,0.8),inset_0_2px_4px_rgba(255,255,255,0.3)]">
+                                    CONFIRM
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                let currentTotal = 0;
+                let itemToRemoveId = null; // This will store the cartId
+                let itemToRemovePrice = 0;
+                let cartCount = 0;
+
+                function updateCartBadge() {
+                    const badge = document.getElementById('cart-badge');
+                    if (!badge) return;
+                    localStorage.setItem('cartCount', cartCount);
+                    if (cartCount <= 0) {
+                        badge.classList.add('hidden');
+                    } else {
+                        badge.classList.remove('hidden');
+                        badge.innerText = cartCount;
+                    }
+                }
+
+                function renderCart() {
+                    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+                    const itemList = document.getElementById('item-list');
+                    const scrollList = document.getElementById('scroll-list');
+                    const totalDue = document.getElementById('total-due');
+
+                    itemList.innerHTML = '';
+                    scrollList.innerHTML = '';
+                    currentTotal = 0;
+                    cartCount = cartItems.length;
+
+                    if (cartItems.length === 0) {
+                        itemList.innerHTML = '<p class="text-slate-500 italic p-4 text-center">Your chest is empty.</p>';
+                        totalDue.innerText = '0 G';
+                        updateCartBadge();
+                        return;
+                    }
+
+                    cartItems.forEach(item => {
+                        currentTotal += item.price;
+
+                        // Create Item Card for Loot Chest
+                        const itemCard = document.createElement('div');
+                        itemCard.className = `group relative flex items-center gap-4 rounded border-2 border-${item.rarity}/20 bg-black/40 p-3 transition-all hover:border-${item.rarity}/40`;
+                        itemCard.setAttribute('data-item-id', item.cartId);
+                        itemCard.innerHTML = `
+                            <div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded bg-surface-darker ring-1 ring-white/5">
+                                <div class="h-full w-full bg-cover bg-center" style='background-image: url("${item.image}");'></div>
+                            </div>
+                            <div class="flex flex-grow flex-col justify-center">
+                                <div class="flex items-center gap-2">
+                                    <h4 class="font-display text-base font-bold text-white">${item.name}</h4>
+                                    <span class="rounded bg-${item.rarity} px-1.5 py-0.5 text-[8px] font-bold uppercase text-${item.rarity === 'legendary' || item.rarity === 'rare' ? 'black' : 'white'} shadow-sm">${item.rarity}</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-[10px] text-slate-400">
+                                    <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">${item.icon}</span> ${item.stat}</span>
+                                    <span>•</span>
+                                    <span>${item.level}</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end gap-1 px-2">
+                                <span class="font-display text-sm font-bold text-gold">${item.price.toLocaleString()} G</span>
+                                <button onclick="removeItem('${item.cartId}', ${item.price})" class="text-slate-500 hover:text-red-500 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                                </button>
+                            </div>
+                        `;
+                        itemList.appendChild(itemCard);
+
+                        // Create Scroll Entry
+                        const scrollEntry = document.createElement('div');
+                        scrollEntry.className = "flex justify-between items-center border-b border-wood-light/20 pb-1";
+                        scrollEntry.setAttribute('data-scroll-id', item.cartId);
+                        scrollEntry.innerHTML = `
+                            <span class="text-slate-800">${item.name}</span>
+                            <span class="font-bold text-slate-900">${item.price.toLocaleString()} G</span>
+                        `;
+                        scrollList.appendChild(scrollEntry);
+                    });
+
+                    totalDue.innerText = `${currentTotal.toLocaleString('en-US')} G`;
+                    updateCartBadge();
+                }
+
+                function removeItem(cartId, price) {
+                    itemToRemoveId = cartId;
+                    itemToRemovePrice = price;
+                    document.getElementById('confirmation-modal').classList.remove('hidden');
+                }
+
+                function closeModal() {
+                    itemToRemoveId = null;
+                    itemToRemovePrice = 0;
+                    document.getElementById('confirmation-modal').classList.add('hidden');
+                }
+
+                function confirmRemoval() {
+                    if (!itemToRemoveId) return;
+
+                    let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+                    cartItems = cartItems.filter(item => item.cartId !== itemToRemoveId);
+
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    localStorage.setItem('cartCount', cartItems.length);
+
+                    renderCart();
+                    closeModal();
+                }
+
+                function openEquipModal() {
+                    if (currentTotal <= 0) return;
+                    document.getElementById('equip-cost-display').innerText = `${currentTotal.toLocaleString('en-US')} G`;
+                    document.getElementById('equip-modal').classList.remove('hidden');
+                }
+
+                function closeEquipModal() {
+                    document.getElementById('equip-modal').classList.add('hidden');
+                }
+
+                function confirmEquip() {
+                    closeEquipModal();
+                    equipItems();
+                }
+
+                function equipItems() {
+                    if (currentTotal <= 0) return;
+
+                    const playerGoldElement = document.getElementById('player-gold');
+                    let playerGold = parseInt(playerGoldElement.innerText.replace(/,/g, '').replace(' G', ''));
+
+                    if (playerGold >= currentTotal) {
+                        playerGold -= currentTotal;
+                        playerGoldElement.innerText = `${playerGold.toLocaleString('en-US')} G`;
+                        localStorage.setItem('playerGold', playerGold);
+
+                        // Clear cart
+                        localStorage.setItem('cartItems', '[]');
+                        localStorage.setItem('cartCount', '0');
+
+                        renderCart();
+
+                        // Show success message
+                        const itemList = document.getElementById('item-list');
+                        itemList.innerHTML = '<p class="text-slate-500 italic p-4 text-center">Tus items han sido equipados.</p>';
+                    } else {
+                        document.getElementById('insufficient-gold-modal').classList.remove('hidden');
+                    }
+                }
+
+                function closeInsufficientGoldModal() {
+                    document.getElementById('insufficient-gold-modal').classList.add('hidden');
+                }
+
+                window.addEventListener('DOMContentLoaded', function () {
+                    // Restore Gold
+                    const savedGold = localStorage.getItem('playerGold');
+                    if (savedGold !== null) {
+                        const goldNum = parseInt(savedGold);
+                        document.getElementById('player-gold').innerText = `${goldNum.toLocaleString('en-US')} G`;
+                    }
+
+                    // Render Cart Items
+                    renderCart();
+                });
+
+                // Sync if multiple tabs are open
+                window.addEventListener('storage', function (e) {
+                    if (e.key === 'cartItems' || e.key === 'playerGold') {
+                        location.reload(); // Simplest way to sync car.html
+                    }
+                });
+            </script>
+    </main>
+    <!-- RPG HUD Footer -->
+    <footer
+        class="fixed bottom-0 z-50 w-full border-t border-surface-dark bg-background-dark/95 backdrop-blur-md pb-safe">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <!-- Player Status (Health/Mana) -->
+            <div class="flex w-1/3 items-center gap-4">
+                <div class="flex flex-col gap-1 w-full max-w-[200px]">
+                    <div
+                        class="relative h-3 w-full overflow-hidden rounded-full bg-surface-darker border border-white/10">
+                        <div id="hp-fill"
+                            class="absolute left-0 top-0 h-full w-[85%] rounded-full bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.6)] transition-all duration-500 ease-in-out">
+                        </div>
+                        <div id="hp-text"
+                            class="absolute inset-0 z-10 flex items-center justify-center text-[8px] font-bold text-white/80">
+                            HP 850/1000</div>
+                    </div>
+
+                    <div
+                        class="relative h-3 w-full overflow-hidden rounded-full bg-surface-darker border border-white/10">
+                        <div id="mp-fill"
+                            class="absolute left-0 top-0 h-full w-[60%] rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.6)] transition-all duration-500 ease-in-out">
+                        </div>
+                        <div id="mp-text"
+                            class="absolute inset-0 z-10 flex items-center justify-center text-[8px] font-bold text-white/80">
+                            MP 300/500</div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                // Valores iniciales
+                let currentHP = 850;
+                const maxHP = 1000;
+                let currentMP = 300;
+                const maxMP = 500;
+
+                function animateStats() {
+                    // Generamos un cambio aleatorio (sube o baja un poco)
+                    currentHP += Math.floor(Math.random() * 60) - 30;
+                    currentMP += Math.floor(Math.random() * 40) - 20;
+
+                    // Validamos que no se salgan del rango 0 - Max
+                    currentHP = Math.max(0, Math.min(maxHP, currentHP));
+                    currentMP = Math.max(0, Math.min(maxMP, currentMP));
+
+                    // Calculamos porcentajes
+                    const hpPercent = (currentHP / maxHP) * 100;
+                    const mpPercent = (currentMP / maxMP) * 100;
+
+                    // Actualizamos las barras (el ancho)
+                    document.getElementById('hp-fill').style.width = `${hpPercent}%`;
+                    document.getElementById('mp-fill').style.width = `${mpPercent}%`;
+
+                    // Actualizamos los textos
+                    document.getElementById('hp-text').innerText = `HP ${currentHP}/${maxHP}`;
+                    document.getElementById('mp-text').innerText = `MP ${currentMP}/${maxMP}`;
+                }
+
+                // Se ejecuta cada 2 segundos para ver el efecto constante
+                setInterval(animateStats, 2000);
+            </script>
+            <!-- Experience Bar / Center Info -->
+            <div class="flex w-1/3 justify-center">
+                <div class="hidden flex-col items-center gap-1 sm:flex">
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Level 42 Paladin</span>
+                    <div class="relative h-1.5 w-48 overflow-hidden rounded-full bg-surface-darker">
+                        <div class="absolute left-0 top-0 h-full w-[45%] bg-yellow-500"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Currency -->
+            <div class="flex w-1/3 justify-end items-center gap-6">
+                <div
+                    class="relative overflow-hidden flex items-center gap-2 rounded bg-black/40 px-3 py-1 border border-white/5 group">
+
+                    <div
+                        class="animate-shine absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                    </div>
+
+                    <span class="material-symbols-outlined text-gold text-[20px] z-10">monetization_on</span>
+                    <span class="font-display text-lg font-bold text-gold z-10" id="player-gold">10,000 G</span>
+                </div>
+                <style>
+                    @keyframes shine {
+                        0% {
+                            transform: translateX(-100%) skewX(-15deg);
+                        }
+
+                        30% {
+                            transform: translateX(200%) skewX(-15deg);
+                        }
+
+                        100% {
+                            transform: translateX(200%) skewX(-15deg);
+                        }
+                    }
+
+                    .animate-shine {
+                        animation: shine 4s infinite;
+                        /* Se repite cada 4 segundos */
+                        width: 50%;
+                        /* Ancho del destello */
+                    }
+                </style>
+            </div>
+        </div>
+    </footer>
+    <div class="h-20"></div>
+
+</body>
+
+</html>

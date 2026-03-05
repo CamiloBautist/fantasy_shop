@@ -121,9 +121,10 @@
         class="sticky top-0 z-50 w-full border-b border-surface-dark bg-background-dark/95 backdrop-blur-sm shadow-lg">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-8">
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+                    onclick="location.reload()">
                     <div
-                        class="flex h-10 w-10 items-center justify-center rounded bg-surface-dark text-primary torch-glow border border-white/5">
+                        class="flex h-10 w-10 items-center justify-center rounded bg-surface-dark text-primary border border-white/5">
                         <span class="material-symbols-outlined">fort</span>
                     </div>
                     <h1 class="font-display text-xl font-bold tracking-tight text-white uppercase">The Dark Dungeon</h1>
@@ -151,12 +152,13 @@
                         class="block w-full rounded-lg border-0 bg-surface-dark py-2 pl-10 pr-3 text-sm text-white placeholder-slate-500 focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all shadow-inner"
                         placeholder="Search the armory..." type="text" />
                 </div>
-                <button
+                <button onclick="window.location.href='car/car.html'"
                     class="relative flex h-10 items-center gap-2 rounded-lg bg-surface-dark px-4 py-2 text-sm font-bold text-white transition hover:bg-surface-dark/80 hover:text-primary border border-white/5 group">
                     <span class="material-symbols-outlined group-hover:animate-bounce">inventory_2</span>
                     <span class="hidden sm:inline"></span>
                     <span
-                        class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold">2</span>
+                        class="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold hidden"
+                        id="cart-badge">0</span>
                 </button>
                 <div
                     class="h-10 w-10 overflow-hidden rounded-full border-2 border-surface-dark cursor-pointer hover:border-primary transition-colors">
@@ -265,12 +267,12 @@
                     <div class="flex flex-col gap-1">
                         <h3
                             class="font-display text-lg font-bold text-white group-hover:text-legendary transition-colors">
-                            <a href="item/item.html">Vorpal Blade</a>
-                        </h3>
+                            Vorpal Blade</h3>
                         <p class="text-xs text-slate-400">Requires Lvl 60 • Two-Handed</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">1,500 G</span>
                             <button
+                                onclick="addToCart({id: 'vorpal-blade', name: 'Vorpal Blade', price: 1500, rarity: 'legendary', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBADURWY0dKQsdoOYcOUyiADJEiW8iNiPcL4CdURXOAQtIjreNamvxv4AqMmxSRoSPNoxiQoy9_TA958ku6kbRSg3CEIkqbzoTNLV8XTLp1ZtP5JuaJCaDWPSmpoKsABhbKwyrFD_0nO5T01aZ8RzeZXCvSMmDGI81FLhgLxJD2hWWU9UL90-PS0vm9qjXM7cM-D5b8pCagmBs_kOGWqjDSeVmzYt3tjnZzL0ZrfSOu-gFOqN7hmT5_q2D3_l1i9KsBiZpKs-T5dEk-', level: 'Lvl 60', stat: '95', icon: 'swords'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-legendary/50 px-3 py-1.5 text-xs font-bold uppercase text-legendary transition hover:bg-legendary hover:text-black shadow-[0_0_10px_rgba(234,179,8,0.2)]">
                                 Equip
                             </button>
@@ -297,12 +299,12 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-epic transition-colors">
-                            <a href="item/item.html">Shadow Cloak</a>
-                        </h3>
+                            Shadow Cloak</h3>
                         <p class="text-xs text-slate-400">Requires Lvl 45 • Light Armor</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">850 G</span>
                             <button
+                                onclick="addToCart({id: 'shadow-cloak', name: 'Shadow Cloak', price: 850, rarity: 'epic', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCEIyFoW7VKIOZJYhuNG8Aew16gsrJrytPIUB-DjdCib6hPzW4YKkhxVBvdh0JbgvhZCG8XIAvsm-Smfqa7IWtxhtxpf3ykKLusCHTjsjR8PbIK7HcyvwKZTmcZRBoQQiVb-oLmZiPlZ1DawLuwoYiojJXbC-s5iZqFf12vzleDXRHb8y_DnTDO5AY05K4EUrNTfPJX5k-c7YDIaul7HiGRZ4mUGa6U255kD3Huc9xCX1VElhZM02bqhTFftK-_kPuMvo9zBX3dXNPF', level: 'Lvl 45', stat: '45', icon: 'shield'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-epic/50 px-3 py-1.5 text-xs font-bold uppercase text-epic transition hover:bg-epic hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.2)]">
                                 Equip
                             </button>
@@ -329,12 +331,12 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-rare transition-colors">
-                            <a href="item/item.html">Elixir of Life</a>
-                        </h3>
+                            Elixir of Life</h3>
                         <p class="text-xs text-slate-400">Consumable • Instant</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">250 G</span>
                             <button
+                                onclick="addToCart({id: 'elixir-life', name: 'Elixir of Life', price: 250, rarity: 'rare', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwvNQVlxiZmLaGxcCwj5FlaMZIE5yR2Y-ihYbrv0noCGCdzcshckuIlbw8QYYQFcl3T0SVl8jZbxDOqt3ZFcHn1yQTDvBmqNNxYgE6lmRBtAFnnLeX6JelD6cSYQFEBqzf3mMDygTqop5yQc5FVh6__DPKNRL23grDuq48WGR8mnRNK6lPLnUx4kENq2lv4cvdFy85GUQnUaOVU_CDJoMKolj0nrt-q3oMpI-8h3Kf4ou6AnfOM7OqkKIKLk0Wt0bnM7UbrfAV_-1A', level: 'Consumable', stat: '+200', icon: 'favorite'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-rare/50 px-3 py-1.5 text-xs font-bold uppercase text-rare transition hover:bg-rare hover:text-black shadow-[0_0_10px_rgba(34,197,94,0.2)]">
                                 Buy
                             </button>
@@ -361,12 +363,12 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-common transition-colors">
-                            <a href="item/item.html">Iron Buckler</a>
-                        </h3>
+                            Iron Buckler</h3>
                         <p class="text-xs text-slate-400">Requires Lvl 5 • Shield</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">45 G</span>
                             <button
+                                onclick="addToCart({id: 'iron-buckler', name: 'Iron Buckler', price: 45, rarity: 'common', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDLSMdd5OYZdmFhRObGWtIpz3yhWQoH1zDpkhytYMJDsjsxldNce3RcavcbP78giyFwRnSIH2AYtmJCSdCyBxhs_p69PQ6KbZcoa2tiO5e4s_XNaOS4QI2AaPJxCQ9DKZy-GeMimoNyP8GuJFiGDT4X6tM0qQscHNs_z66Ebt45pu8GDh637zICgPrsxrXsFk5FGYN3fxbqSacHYNAcWmaUKDB5Bm4qstaPMmX_zt8fWwxG7vSfZiZ9B-p9ZhG-oMoNHwWr1hzn2CK3', level: 'Lvl 5', stat: '12', icon: 'shield'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-common/30 px-3 py-1.5 text-xs font-bold uppercase text-common transition hover:bg-common hover:text-black">
                                 Equip
                             </button>
@@ -393,12 +395,12 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-epic transition-colors">
-                            <a href="item/item.html">Ring of Frost</a>
-                        </h3>
+                            Ring of Frost</h3>
                         <p class="text-xs text-slate-400">Requires Lvl 30 • Accessory</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">600 G</span>
                             <button
+                                onclick="addToCart({id: 'ring-frost', name: 'Ring of Frost', price: 600, rarity: 'epic', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB2AtMoq182JNXdA6pvGaIbJSszwC1qR9FtQ76gTQKBJ3KbqsZrmhZ7EqNSpZHjvP8L0Eujt6jBv7mGar6DaGBwj4isd-WmL8Y7j6yOh4hXstwo-w-Aoeb_oAu0sQAOD6chIAnu4f5lH59xGwhCehXppSCkfnOhLwf-4wYN-D3rn-qDQLjWeCqPpgEltvvDmCfV4F4jBxUGmKMvgU7QTxDz761Nj-P7HHtlSp3cGGwZNy78TLuhEuCcUdZQWDRWlRH9huCmzKxIaQ1v', level: 'Lvl 30', stat: '+50', icon: 'bolt'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-epic/50 px-3 py-1.5 text-xs font-bold uppercase text-epic transition hover:bg-epic hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.2)]">
                                 Equip
                             </button>
@@ -425,12 +427,12 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-rare transition-colors">
-                            <a href="item/item.html">Scroll of Wisdom</a>
-                        </h3>
+                            Scroll of Wisdom</h3>
                         <p class="text-xs text-slate-400">One-time use • Learn Spell</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">320 G</span>
                             <button
+                                onclick="addToCart({id: 'scroll-wisdom', name: 'Scroll of Wisdom', price: 320, rarity: 'rare', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCZ1opAx1x--7MSaBQlbKbdiIL0RMM3W6WIQP1evbxKx9vexrkgU9OarrHyfREL1jtthRRfWKPt8I5lQbmKdsEnlERMQn8Lf6Hky-_SJHfpW1LPCTMFNnr2eUXo4FuPJiXaZAFtJIzdjHQryROxJZz__EH-RoaYO7_5OWGMrUBV5if27kCXGSxcNenOyN1cltO4TkDrWnldwpygGyg-Gy50OXeLi_pZTmQIE6PdssmJYHPRJf4GipOlVKTnfVJxXwG1zVVCZwMHrfu1', level: 'Spell', stat: '+15', icon: 'school'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-rare/50 px-3 py-1.5 text-xs font-bold uppercase text-rare transition hover:bg-rare hover:text-black shadow-[0_0_10px_rgba(34,197,94,0.2)]">
                                 Buy
                             </button>
@@ -457,12 +459,12 @@
                     </div>
                     <div class="flex flex-col gap-1">
                         <h3 class="font-display text-lg font-bold text-white group-hover:text-common transition-colors">
-                            <a href="item/item.html">Traveler's Boots</a>
-                        </h3>
+                            Traveler's Boots</h3>
                         <p class="text-xs text-slate-400">Requires Lvl 1 • Feet</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">20 G</span>
                             <button
+                                onclick="addToCart({id: 'traveler-boots', name: 'Traveler\'s Boots', price: 20, rarity: 'common', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBR2LiRazJRkorNyBqgheOuqRxHkdhK7ca261B31Y-pcnFCZu0sm1xb8lLpLVesZqrStYuhvcYTWu-Xhlfuj0l0uShu61FFXA0YZpBFUokyij61bARc1ibGcboapLlcSbrRQlJXsFC2nu2CkvZbmmIxmzOczT-It5AkoZjNJKQhV0aWYS-2NTQJRcyajWQvhrWL_ef23fsmpet9oyxmFRtKreHmhoyPRiq_tdCoW7C7RxNv2E0kNKhtA62m-MXSt69L6TCw7sAOPFiZ', level: 'Lvl 1', stat: '+5', icon: 'sprint'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-common/30 px-3 py-1.5 text-xs font-bold uppercase text-common transition hover:bg-common hover:text-black">
                                 Equip
                             </button>
@@ -490,12 +492,12 @@
                     <div class="flex flex-col gap-1">
                         <h3
                             class="font-display text-lg font-bold text-white group-hover:text-legendary transition-colors">
-                            <a href="item/item.html">Helm of the Void</a>
-                        </h3>
+                            Helm of the Void</h3>
                         <p class="text-xs text-slate-400">Requires Lvl 70 • Plate</p>
                         <div class="mt-3 flex items-center justify-between">
                             <span class="font-display text-lg font-bold text-gold">2,400 G</span>
                             <button
+                                onclick="addToCart({id: 'helm-void', name: 'Helm of the Void', price: 2400, rarity: 'legendary', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMZLHC3Ge6FfyX_lmUJGD-KBgaRP0QmhGBSUQ8ZCbce7312qaLnXFqGqO7Pt9rnsM6GrgNr3oHHEyw03Qen147xB3gV-lFUr2P-KY1yWPG7H2Jof8m8rSup6wQ23OqytCVSa3fHcx1pgI7ULPrs9DeykCFTy0Q8HP2SsKpJQdjmJHgKOxz66zaqLtDdjmNvB36FcuyXnzmqYcK9hzyEysGTp-6lkntZQtDjPz7eap8vttnTeZr5W_IfSM1x5uF-KZSeTIpLg7TfVQV', level: 'Lvl 70', stat: '150', icon: 'shield'})"
                                 class="flex items-center justify-center rounded bg-surface-darker border border-legendary/50 px-3 py-1.5 text-xs font-bold uppercase text-legendary transition hover:bg-legendary hover:text-black shadow-[0_0_10px_rgba(234,179,8,0.2)]">
                                 Equip
                             </button>
@@ -507,6 +509,55 @@
             <div class="mt-12 flex justify-center">
             </div>
         </div>
+        <script>
+            function updateHUD() {
+                // Update badge
+                const badge = document.getElementById('cart-badge');
+                if (badge) {
+                    const cartCount = parseInt(localStorage.getItem('cartCount') || '0');
+                    if (cartCount <= 0) {
+                        badge.classList.add('hidden');
+                    } else {
+                        badge.classList.remove('hidden');
+                        badge.innerText = cartCount;
+                    }
+                }
+
+                // Update gold
+                const goldElement = document.getElementById('player-gold');
+                if (goldElement) {
+                    const savedGold = localStorage.getItem('playerGold');
+                    if (savedGold !== null) {
+                        const goldNum = parseInt(savedGold);
+                        goldElement.innerText = `${goldNum.toLocaleString('en-US')} G`;
+                    }
+                }
+            }
+
+            function addToCart(item) {
+                // Get current cart or empty array
+                const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+
+                // Add unique timestamp id for each instance (allows buying same item multiple times)
+                const cartId = Date.now() + Math.random().toString(36).substr(2, 9);
+                const itemToAdd = { ...item, cartId };
+
+                cartItems.push(itemToAdd);
+
+                // Save back to storage
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                localStorage.setItem('cartCount', cartItems.length);
+
+                // Update Badge and Sync
+                updateHUD();
+
+                // Optional: Dispatch storage event for other tabs if they don't catch it automatically
+                window.dispatchEvent(new Event('storage'));
+            }
+
+            window.addEventListener('DOMContentLoaded', updateHUD);
+            window.addEventListener('storage', updateHUD);
+        </script>
     </main>
     <!-- RPG HUD Footer -->
     <footer
@@ -587,7 +638,7 @@
                     </div>
 
                     <span class="material-symbols-outlined text-gold text-[20px] z-10">monetization_on</span>
-                    <span class="font-display text-lg font-bold text-gold z-10">4,250 G</span>
+                    <span class="font-display text-lg font-bold text-gold z-10" id="player-gold">10,000 G</span>
                 </div>
                 <style>
                     @keyframes shine {
