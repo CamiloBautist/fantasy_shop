@@ -18,6 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -131,15 +132,12 @@
                 </div>
                 <nav class="hidden md:flex items-center gap-6">
                     <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
-                        href="#">Weapons</a>
+                        href="#">Electrónica</a>
+                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors" href="#">Ropa</a>
                     <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
-                        href="#">Armor</a>
+                        href="#">Hogar</a>
                     <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
-                        href="#">Potions</a>
-                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
-                        href="#">Scrolls</a>
-                    <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
-                        href="#">Artifacts</a>
+                        href="#">Deportes</a>
                 </nav>
             </div>
             <div class="flex items-center gap-4">
@@ -168,7 +166,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </header>
     <main class="flex-grow">
         <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -177,7 +174,7 @@
                 class="relative overflow-hidden rounded-xl border border-white/10 bg-surface-dark shadow-2xl mb-10 group">
                 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                     data-alt="Dark fantasy banner showing a dimly lit forge with glowing embers and magical weapons"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA380DgKQStDQQ7SSRCtDILRpxETpNHDpvATcv73_9SLLEj5FRsS6ikv6_jQmYflhqL64bbjoZitRbsl3n0Hpw7MpWg07FV0q2s0GR7pSGx1pghXjKt33cTOnoP-F9pGNTcwgeCOsdc9z3Gp6YEelS6MfR_YDNWCUaoW00XGeJRQaBFlgfegKl8MAw0PlR3dL5b9Wb-6_IoIsQCajQW8RCFNrw18QGlfmEE5Pd6A5pPs-KyzIYPKQWPAodP3c9pvHhcCEQvWqdmV1l8");'>
+                    style='background-image: url("https://i.pinimg.com/1200x/8d/b0/8f/8db08f6856db230de51ef255d05b2636.jpg");'>
                 </div>
                 <div
                     class="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/80 to-transparent">
@@ -244,265 +241,14 @@
                     </button>
                 </div>
             </div>
-            <!-- Item Grid -->
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                <!-- Legendary Item Card -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-legendary/20 p-4 transition-all hover:-translate-y-1 glow-legendary">
+            <!-- Item Grid (Contenedor Dinámico) -->
+            <div id="product-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+                <div class="col-span-full py-20 text-center">
                     <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-legendary px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
-                        Legendary</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Pixel art glowing golden sword with magical runes floating around it"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBADURWY0dKQsdoOYcOUyiADJEiW8iNiPcL4CdURXOAQtIjreNamvxv4AqMmxSRoSPNoxiQoy9_TA958ku6kbRSg3CEIkqbzoTNLV8XTLp1ZtP5JuaJCaDWPSmpoKsABhbKwyrFD_0nO5T01aZ8RzeZXCvSMmDGI81FLhgLxJD2hWWU9UL90-PS0vm9qjXM7cM-D5b8pCagmBs_kOGWqjDSeVmzYt3tjnZzL0ZrfSOu-gFOqN7hmT5_q2D3_l1i9KsBiZpKs-T5dEk-");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Damage"><span
-                                    class="material-symbols-outlined text-[16px]">swords</span> <span
-                                    class="text-xs font-bold">95</span></div>
-                        </div>
+                        class="animate-spin inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-4">
                     </div>
-                    <div class="flex flex-col gap-1">
-                        <h3
-                            class="font-display text-lg font-bold text-white group-hover:text-legendary transition-colors">
-                            Vorpal Blade</h3>
-                        <p class="text-xs text-slate-400">Requires Lvl 60 • Two-Handed</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">1,500 G</span>
-                            <button
-                                onclick="addToCart({id: 'vorpal-blade', name: 'Vorpal Blade', price: 1500, rarity: 'legendary', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBADURWY0dKQsdoOYcOUyiADJEiW8iNiPcL4CdURXOAQtIjreNamvxv4AqMmxSRoSPNoxiQoy9_TA958ku6kbRSg3CEIkqbzoTNLV8XTLp1ZtP5JuaJCaDWPSmpoKsABhbKwyrFD_0nO5T01aZ8RzeZXCvSMmDGI81FLhgLxJD2hWWU9UL90-PS0vm9qjXM7cM-D5b8pCagmBs_kOGWqjDSeVmzYt3tjnZzL0ZrfSOu-gFOqN7hmT5_q2D3_l1i9KsBiZpKs-T5dEk-', level: 'Lvl 60', stat: '95', icon: 'swords'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-legendary/50 px-3 py-1.5 text-xs font-bold uppercase text-legendary transition hover:bg-legendary hover:text-black shadow-[0_0_10px_rgba(234,179,8,0.2)]">
-                                Equip
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Epic Item Card -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-epic/20 p-4 transition-all hover:-translate-y-1 glow-epic">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-epic px-2 py-0.5 text-[10px] font-bold uppercase text-white shadow-lg">
-                        Epic</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Dark shadowy cloak floating in the void with purple aura"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEIyFoW7VKIOZJYhuNG8Aew16gsrJrytPIUB-DjdCib6hPzW4YKkhxVBvdh0JbgvhZCG8XIAvsm-Smfqa7IWtxhtxpf3ykKLusCHTjsjR8PbIK7HcyvwKZTmcZRBoQQiVb-oLmZiPlZ1DawLuwoYiojJXbC-s5iZqFf12vzleDXRHb8y_DnTDO5AY05K4EUrNTfPJX5k-c7YDIaul7HiGRZ4mUGa6U255kD3Huc9xCX1VElhZM02bqhTFftK-_kPuMvo9zBX3dXNPF");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Defense"><span
-                                    class="material-symbols-outlined text-[16px]">shield</span> <span
-                                    class="text-xs font-bold">45</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-epic transition-colors">
-                            Shadow Cloak</h3>
-                        <p class="text-xs text-slate-400">Requires Lvl 45 • Light Armor</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">850 G</span>
-                            <button
-                                onclick="addToCart({id: 'shadow-cloak', name: 'Shadow Cloak', price: 850, rarity: 'epic', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCEIyFoW7VKIOZJYhuNG8Aew16gsrJrytPIUB-DjdCib6hPzW4YKkhxVBvdh0JbgvhZCG8XIAvsm-Smfqa7IWtxhtxpf3ykKLusCHTjsjR8PbIK7HcyvwKZTmcZRBoQQiVb-oLmZiPlZ1DawLuwoYiojJXbC-s5iZqFf12vzleDXRHb8y_DnTDO5AY05K4EUrNTfPJX5k-c7YDIaul7HiGRZ4mUGa6U255kD3Huc9xCX1VElhZM02bqhTFftK-_kPuMvo9zBX3dXNPF', level: 'Lvl 45', stat: '45', icon: 'shield'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-epic/50 px-3 py-1.5 text-xs font-bold uppercase text-epic transition hover:bg-epic hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.2)]">
-                                Equip
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Rare Item Card -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-rare/20 p-4 transition-all hover:-translate-y-1 glow-rare">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-rare px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
-                        Rare</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Glass vial filled with glowing red liquid"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwvNQVlxiZmLaGxcCwj5FlaMZIE5yR2Y-ihYbrv0noCGCdzcshckuIlbw8QYYQFcl3T0SVl8jZbxDOqt3ZFcHn1yQTDvBmqNNxYgE6lmRBtAFnnLeX6JelD6cSYQFEBqzf3mMDygTqop5yQc5FVh6__DPKNRL23grDuq48WGR8mnRNK6lPLnUx4kENq2lv4cvdFy85GUQnUaOVU_CDJoMKolj0nrt-q3oMpI-8h3Kf4ou6AnfOM7OqkKIKLk0Wt0bnM7UbrfAV_-1A");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Health"><span
-                                    class="material-symbols-outlined text-[16px]">favorite</span> <span
-                                    class="text-xs font-bold">+200</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-rare transition-colors">
-                            Elixir of Life</h3>
-                        <p class="text-xs text-slate-400">Consumable • Instant</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">250 G</span>
-                            <button
-                                onclick="addToCart({id: 'elixir-life', name: 'Elixir of Life', price: 250, rarity: 'rare', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwvNQVlxiZmLaGxcCwj5FlaMZIE5yR2Y-ihYbrv0noCGCdzcshckuIlbw8QYYQFcl3T0SVl8jZbxDOqt3ZFcHn1yQTDvBmqNNxYgE6lmRBtAFnnLeX6JelD6cSYQFEBqzf3mMDygTqop5yQc5FVh6__DPKNRL23grDuq48WGR8mnRNK6lPLnUx4kENq2lv4cvdFy85GUQnUaOVU_CDJoMKolj0nrt-q3oMpI-8h3Kf4ou6AnfOM7OqkKIKLk0Wt0bnM7UbrfAV_-1A', level: 'Consumable', stat: '+200', icon: 'favorite'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-rare/50 px-3 py-1.5 text-xs font-bold uppercase text-rare transition hover:bg-rare hover:text-black shadow-[0_0_10px_rgba(34,197,94,0.2)]">
-                                Buy
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Common Item Card -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-common/10 p-4 transition-all hover:-translate-y-1 glow-common">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-white px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
-                        Common</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Round wooden shield with iron banding"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLSMdd5OYZdmFhRObGWtIpz3yhWQoH1zDpkhytYMJDsjsxldNce3RcavcbP78giyFwRnSIH2AYtmJCSdCyBxhs_p69PQ6KbZcoa2tiO5e4s_XNaOS4QI2AaPJxCQ9DKZy-GeMimoNyP8GuJFiGDT4X6tM0qQscHNs_z66Ebt45pu8GDh637zICgPrsxrXsFk5FGYN3fxbqSacHYNAcWmaUKDB5Bm4qstaPMmX_zt8fWwxG7vSfZiZ9B-p9ZhG-oMoNHwWr1hzn2CK3");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Defense"><span
-                                    class="material-symbols-outlined text-[16px]">shield</span> <span
-                                    class="text-xs font-bold">12</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-common transition-colors">
-                            Iron Buckler</h3>
-                        <p class="text-xs text-slate-400">Requires Lvl 5 • Shield</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">45 G</span>
-                            <button
-                                onclick="addToCart({id: 'iron-buckler', name: 'Iron Buckler', price: 45, rarity: 'common', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDLSMdd5OYZdmFhRObGWtIpz3yhWQoH1zDpkhytYMJDsjsxldNce3RcavcbP78giyFwRnSIH2AYtmJCSdCyBxhs_p69PQ6KbZcoa2tiO5e4s_XNaOS4QI2AaPJxCQ9DKZy-GeMimoNyP8GuJFiGDT4X6tM0qQscHNs_z66Ebt45pu8GDh637zICgPrsxrXsFk5FGYN3fxbqSacHYNAcWmaUKDB5Bm4qstaPMmX_zt8fWwxG7vSfZiZ9B-p9ZhG-oMoNHwWr1hzn2CK3', level: 'Lvl 5', stat: '12', icon: 'shield'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-common/30 px-3 py-1.5 text-xs font-bold uppercase text-common transition hover:bg-common hover:text-black">
-                                Equip
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Epic Item Card 2 -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-epic/20 p-4 transition-all hover:-translate-y-1 glow-epic">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-epic px-2 py-0.5 text-[10px] font-bold uppercase text-white shadow-lg">
-                        Epic</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Detailed pixel art ring with a glowing blue sapphire"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2AtMoq182JNXdA6pvGaIbJSszwC1qR9FtQ76gTQKBJ3KbqsZrmhZ7EqNSpZHjvP8L0Eujt6jBv7mGar6DaGBwj4isd-WmL8Y7j6yOh4hXstwo-w-Aoeb_oAu0sQAOD6chIAnu4f5lH59xGwhCehXppSCkfnOhLwf-4wYN-D3rn-qDQLjWeCqPpgEltvvDmCfV4F4jBxUGmKMvgU7QTxDz761Nj-P7HHtlSp3cGGwZNy78TLuhEuCcUdZQWDRWlRH9huCmzKxIaQ1v");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Mana"><span
-                                    class="material-symbols-outlined text-[16px]">bolt</span> <span
-                                    class="text-xs font-bold">+50</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-epic transition-colors">
-                            Ring of Frost</h3>
-                        <p class="text-xs text-slate-400">Requires Lvl 30 • Accessory</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">600 G</span>
-                            <button
-                                onclick="addToCart({id: 'ring-frost', name: 'Ring of Frost', price: 600, rarity: 'epic', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB2AtMoq182JNXdA6pvGaIbJSszwC1qR9FtQ76gTQKBJ3KbqsZrmhZ7EqNSpZHjvP8L0Eujt6jBv7mGar6DaGBwj4isd-WmL8Y7j6yOh4hXstwo-w-Aoeb_oAu0sQAOD6chIAnu4f5lH59xGwhCehXppSCkfnOhLwf-4wYN-D3rn-qDQLjWeCqPpgEltvvDmCfV4F4jBxUGmKMvgU7QTxDz761Nj-P7HHtlSp3cGGwZNy78TLuhEuCcUdZQWDRWlRH9huCmzKxIaQ1v', level: 'Lvl 30', stat: '+50', icon: 'bolt'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-epic/50 px-3 py-1.5 text-xs font-bold uppercase text-epic transition hover:bg-epic hover:text-white shadow-[0_0_10px_rgba(59,130,246,0.2)]">
-                                Equip
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Rare Item Card 2 -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-rare/20 p-4 transition-all hover:-translate-y-1 glow-rare">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-rare px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
-                        Rare</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Old scroll with glowing green runes and sigils"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZ1opAx1x--7MSaBQlbKbdiIL0RMM3W6WIQP1evbxKx9vexrkgU9OarrHyfREL1jtthRRfWKPt8I5lQbmKdsEnlERMQn8Lf6Hky-_SJHfpW1LPCTMFNnr2eUXo4FuPJiXaZAFtJIzdjHQryROxJZz__EH-RoaYO7_5OWGMrUBV5if27kCXGSxcNenOyN1cltO4TkDrWnldwpygGyg-Gy50OXeLi_pZTmQIE6PdssmJYHPRJf4GipOlVKTnfVJxXwG1zVVCZwMHrfu1");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Intellect"><span
-                                    class="material-symbols-outlined text-[16px]">school</span> <span
-                                    class="text-xs font-bold">+15</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-rare transition-colors">
-                            Scroll of Wisdom</h3>
-                        <p class="text-xs text-slate-400">One-time use • Learn Spell</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">320 G</span>
-                            <button
-                                onclick="addToCart({id: 'scroll-wisdom', name: 'Scroll of Wisdom', price: 320, rarity: 'rare', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCZ1opAx1x--7MSaBQlbKbdiIL0RMM3W6WIQP1evbxKx9vexrkgU9OarrHyfREL1jtthRRfWKPt8I5lQbmKdsEnlERMQn8Lf6Hky-_SJHfpW1LPCTMFNnr2eUXo4FuPJiXaZAFtJIzdjHQryROxJZz__EH-RoaYO7_5OWGMrUBV5if27kCXGSxcNenOyN1cltO4TkDrWnldwpygGyg-Gy50OXeLi_pZTmQIE6PdssmJYHPRJf4GipOlVKTnfVJxXwG1zVVCZwMHrfu1', level: 'Spell', stat: '+15', icon: 'school'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-rare/50 px-3 py-1.5 text-xs font-bold uppercase text-rare transition hover:bg-rare hover:text-black shadow-[0_0_10px_rgba(34,197,94,0.2)]">
-                                Buy
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Common Item Card 2 -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-common/10 p-4 transition-all hover:-translate-y-1 glow-common">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-white px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
-                        Common</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Simple leather boots with mud stains"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBR2LiRazJRkorNyBqgheOuqRxHkdhK7ca261B31Y-pcnFCZu0sm1xb8lLpLVesZqrStYuhvcYTWu-Xhlfuj0l0uShu61FFXA0YZpBFUokyij61bARc1ibGcboapLlcSbrRQlJXsFC2nu2CkvZbmmIxmzOczT-It5AkoZjNJKQhV0aWYS-2NTQJRcyajWQvhrWL_ef23fsmpet9oyxmFRtKreHmhoyPRiq_tdCoW7C7RxNv2E0kNKhtA62m-MXSt69L6TCw7sAOPFiZ");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Speed"><span
-                                    class="material-symbols-outlined text-[16px]">sprint</span> <span
-                                    class="text-xs font-bold">+5</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3 class="font-display text-lg font-bold text-white group-hover:text-common transition-colors">
-                            Traveler's Boots</h3>
-                        <p class="text-xs text-slate-400">Requires Lvl 1 • Feet</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">20 G</span>
-                            <button
-                                onclick="addToCart({id: 'traveler-boots', name: 'Traveler\'s Boots', price: 20, rarity: 'common', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBR2LiRazJRkorNyBqgheOuqRxHkdhK7ca261B31Y-pcnFCZu0sm1xb8lLpLVesZqrStYuhvcYTWu-Xhlfuj0l0uShu61FFXA0YZpBFUokyij61bARc1ibGcboapLlcSbrRQlJXsFC2nu2CkvZbmmIxmzOczT-It5AkoZjNJKQhV0aWYS-2NTQJRcyajWQvhrWL_ef23fsmpet9oyxmFRtKreHmhoyPRiq_tdCoW7C7RxNv2E0kNKhtA62m-MXSt69L6TCw7sAOPFiZ', level: 'Lvl 1', stat: '+5', icon: 'sprint'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-common/30 px-3 py-1.5 text-xs font-bold uppercase text-common transition hover:bg-common hover:text-black">
-                                Equip
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Legendary Item Card 2 -->
-                <div
-                    class="group relative flex flex-col rounded-lg bg-surface-dark border-2 border-legendary/20 p-4 transition-all hover:-translate-y-1 glow-legendary">
-                    <div
-                        class="absolute -top-3 -right-3 z-10 rounded bg-legendary px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
-                        Legendary</div>
-                    <div
-                        class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
-                        <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Dark heavy plate helmet with glowing red eyes"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMZLHC3Ge6FfyX_lmUJGD-KBgaRP0QmhGBSUQ8ZCbce7312qaLnXFqGqO7Pt9rnsM6GrgNr3oHHEyw03Qen147xB3gV-lFUr2P-KY1yWPG7H2Jof8m8rSup6wQ23OqytCVSa3fHcx1pgI7ULPrs9DeykCFTy0Q8HP2SsKpJQdjmJHgKOxz66zaqLtDdjmNvB36FcuyXnzmqYcK9hzyEysGTp-6lkntZQtDjPz7eap8vttnTeZr5W_IfSM1x5uF-KZSeTIpLg7TfVQV");'>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex gap-1">
-                            <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Defense"><span
-                                    class="material-symbols-outlined text-[16px]">shield</span> <span
-                                    class="text-xs font-bold">150</span></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <h3
-                            class="font-display text-lg font-bold text-white group-hover:text-legendary transition-colors">
-                            Helm of the Void</h3>
-                        <p class="text-xs text-slate-400">Requires Lvl 70 • Plate</p>
-                        <div class="mt-3 flex items-center justify-between">
-                            <span class="font-display text-lg font-bold text-gold">2,400 G</span>
-                            <button
-                                onclick="addToCart({id: 'helm-void', name: 'Helm of the Void', price: 2400, rarity: 'legendary', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMZLHC3Ge6FfyX_lmUJGD-KBgaRP0QmhGBSUQ8ZCbce7312qaLnXFqGqO7Pt9rnsM6GrgNr3oHHEyw03Qen147xB3gV-lFUr2P-KY1yWPG7H2Jof8m8rSup6wQ23OqytCVSa3fHcx1pgI7ULPrs9DeykCFTy0Q8HP2SsKpJQdjmJHgKOxz66zaqLtDdjmNvB36FcuyXnzmqYcK9hzyEysGTp-6lkntZQtDjPz7eap8vttnTeZr5W_IfSM1x5uF-KZSeTIpLg7TfVQV', level: 'Lvl 70', stat: '150', icon: 'shield'})"
-                                class="flex items-center justify-center rounded bg-surface-darker border border-legendary/50 px-3 py-1.5 text-xs font-bold uppercase text-legendary transition hover:bg-legendary hover:text-black shadow-[0_0_10px_rgba(234,179,8,0.2)]">
-                                Equip
-                            </button>
-                        </div>
-                    </div>
+                    <p class="text-slate-400 font-display">Consultando al ArmeroReal...</p>
                 </div>
             </div>
             <!-- Pagination -->
@@ -510,6 +256,120 @@
             </div>
         </div>
         <script>
+            // Configuración de Supabase
+            const SUPABASE_URL = 'https://dhaeigcgmsjtfbrmhgok.supabase.co';
+            const SUPABASE_ANON_KEY = 'sb_publishable_w0oUQY8O2IyamsNZG1__gg_JnwsdqB9';
+            const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            async function loadProducts() {
+                const grid = document.getElementById('product-grid');
+
+                try {
+                    const { data: productos, error } = await _supabase
+                        .from('producto')
+                        .select('*')
+                        .eq('estado', true);
+
+                    if (error) throw error;
+
+                    if (!productos || productos.length === 0) {
+                        grid.innerHTML = `
+                            <div class="col-span-full py-20 text-center">
+                                <span class="material-symbols-outlined text-6xl text-slate-600 mb-4">inventory_2</span>
+                                <p class="text-slate-400 font-display">La armería está vacía... por ahora.</p>
+                                <p class="text-xs text-slate-500 mt-2">Asegúrate de haber cargado datos en la tabla 'producto'.</p>
+                            </div>`;
+                        return;
+                    }
+
+                    grid.innerHTML = ''; // Limpiar loader
+
+                    productos.forEach(item => {
+                        // Mapeo dinámico para ajustar iconos y rarezas según el tipo de producto
+                        let rarity = 'common';
+                        let icon = 'inventory_2';
+                        let level = 'Nuevo';
+
+                        // Mapeo por ID de tipo (1: Electrónica, 2: Ropa, 3: Hogar, 4: Deportes)
+                        switch (item.id_tipo_producto) {
+                            case 1:
+                                rarity = 'epic';
+                                icon = 'devices';
+                                level = item.precio > 3000 ? 'High-End' : 'Standard';
+                                break;
+                            case 2:
+                                rarity = 'rare';
+                                icon = 'apparel';
+                                break;
+                            case 3:
+                                rarity = 'common';
+                                icon = 'home';
+                                break;
+                            case 4:
+                                rarity = 'legendary';
+                                icon = 'sports_soccer';
+                                break;
+                        }
+
+                        // Fallback de imagen si no viene de la DB (mapeo por código)
+                        let imgPath = item.imagen_url;
+                        if (!imgPath) {
+                            const imgMap = {
+                                'LAP-001': 'assets/Laptop.jpg',
+                                'CEL-001': 'assets/Samsung.jpg',
+                                'ROP-001': 'assets/Camiseta.jpg',
+                                'HOG-001': 'assets/Licuadora.jpg',
+                                'DEP-001': 'assets/balon.jpg'
+                            };
+                            imgPath = imgMap[item.codigo] || 'https://via.placeholder.com/300?text=Product';
+                        }
+
+                        const card = document.createElement('div');
+                        card.className = `group relative flex flex-col rounded-lg bg-surface-dark border-2 border-${rarity}/20 p-4 transition-all hover:-translate-y-1 glow-${rarity}`;
+
+                        card.innerHTML = `
+                            <div class="absolute -top-3 -right-3 z-10 rounded bg-${rarity} px-2 py-0.5 text-[10px] font-bold uppercase text-black shadow-lg">
+                                ${rarity}</div>
+                            <div class="aspect-square w-full overflow-hidden rounded bg-surface-darker relative border border-white/5 mb-4">
+                                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                    style='background-image: url("${imgPath}");'>
+                                </div>
+                                <div class="absolute bottom-2 right-2 flex gap-1">
+                                    <div class="bg-black/60 p-1 rounded backdrop-blur-sm text-white" title="Tipo">
+                                        <span class="material-symbols-outlined text-[16px]">${icon}</span> 
+                                        <span class="text-xs font-bold">${level}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <h3 class="font-display text-lg font-bold text-white group-hover:text-${rarity} transition-colors">
+                                    ${item.nombre}</h3>
+                                <p class="text-xs text-slate-400">${item.descripcion || 'Sin descripción'}</p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <span class="font-display text-lg font-bold text-gold">$${item.precio.toLocaleString()}</span>
+                                    <button
+                                        onclick="addToCart({id: '${item.id_producto}', name: '${item.nombre}', price: ${item.precio}, rarity: '${rarity}', image: '${imgPath}', level: '${level}', stat: 'N/A', icon: '${icon}'})"
+                                        class="flex items-center justify-center rounded bg-surface-darker border border-${rarity}/50 px-3 py-1.5 text-xs font-bold uppercase text-${rarity} transition hover:bg-${rarity} hover:text-black shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+
+                } catch (err) {
+                    console.error('Error cargando productos:', err);
+                    grid.innerHTML = `<p class="col-span-full text-center text-red-500">Error al contactar con la forja: ${err.message}</p>`;
+                }
+            }
+
+            // Llamar al cargar la página
+            window.addEventListener('DOMContentLoaded', () => {
+                loadProducts();
+                updateHUD();
+            });
+
             function updateHUD() {
                 // Update badge
                 const badge = document.getElementById('cart-badge');
